@@ -1,23 +1,20 @@
 # CiviAI
 
-## Title
-CiviAI: An Intelligent Civic Issue Detection, Prioritization and Management System Using Generative AI
+CiviAI is an AI-powered smart civic issue detection, prioritization, and management system designed to improve community problem resolution using Artificial Intelligence and Generative AI.
 
-## Project Description
-CiviAI is an AI-powered mobile application that enables citizens to report civic issues such as potholes, garbage accumulation, water leakage, damaged streetlights, and sewage overflow.
+## Features
+- AI-based civic issue detection
+- Complaint prioritization
+- Duplicate complaint detection
+- Multilingual complaint assistance
+- Smart admin dashboard
+- Real-time complaint tracking
 
-The system uses Artificial Intelligence and Generative AI to:
-- Detect issues from images
-- Generate complaint descriptions
-- Detect duplicate complaints
-- Prioritize complaints
-- Track complaint status
+## Tech Stack
+- Frontend: React.js
+- Backend: FastAPI (Python)
+- Database: MongoDB
+- AI: YOLO, SBERT, Gemini LLM, XGBoost
 
-## Technologies
-- Flutter
-- Python
-- Firebase
-- YOLO
-- Gemini LLM
-- SBERT
-- XGBoost
+## Status
+🚧 Under Development
