@@ -1,10 +1,18 @@
+from functools import lru_cache
 
 from sentence_transformers import SentenceTransformer, util
 
 
-# Load the model once when this module is imported.
 MODEL_NAME = "all-MiniLM-L6-v2"
-model = SentenceTransformer(MODEL_NAME)
+
+
+# Load Sentence-BERT only when needed.
+@lru_cache(maxsize=1)
+def get_model():
+    return SentenceTransformer(
+        MODEL_NAME,
+        device="cpu",
+    )
 
 
 def find_similar_complaints(
@@ -17,30 +25,45 @@ def find_similar_complaints(
     """
     Find existing complaints with semantically similar descriptions.
 
-    This function identifies possible duplicates; it does not
-    automatically reject or delete any complaint.
+    This function identifies possible duplicates.
+    It does not automatically reject or delete complaints.
     """
+
     if not description or not description.strip():
         return []
 
-    new_text = f"{category.strip()}. {description.strip()}".strip(". ")
+    new_text = (
+        f"{category.strip()}. {description.strip()}"
+    ).strip(". ")
+
     candidates = []
     candidate_texts = []
 
     for complaint in existing_complaints:
-        old_description = str(complaint.get("description") or "").strip()
+        old_description = str(
+            complaint.get("description") or ""
+        ).strip()
 
         if not old_description:
             continue
 
-        old_category = str(complaint.get("category") or "").strip()
-        old_text = f"{old_category}. {old_description}".strip(". ")
+        old_category = str(
+            complaint.get("category") or ""
+        ).strip()
+
+        old_text = (
+            f"{old_category}. {old_description}"
+        ).strip(". ")
 
         candidates.append(complaint)
         candidate_texts.append(old_text)
 
+    # No existing complaints to compare.
     if not candidates:
         return []
+
+    # Load the model only when duplicate checking is needed.
+    model = get_model()
 
     new_embedding = model.encode(
         new_text,
@@ -54,7 +77,10 @@ def find_similar_complaints(
         normalize_embeddings=True,
     )
 
-    similarities = util.cos_sim(new_embedding, old_embeddings)[0]
+    similarities = util.cos_sim(
+        new_embedding,
+        old_embeddings,
+    )[0]
 
     matches = []
 
