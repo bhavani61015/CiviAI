@@ -1,0 +1,21 @@
+category,description,detections_count,near_school_or_hospital,blocks_traffic,safety_risk,priority
+Garbage,Small amount of litter in a quiet side street,1,0,0,0,Low
+Streetlight,One streetlight is not working on a residential lane,1,0,0,0,Low
+Garbage,Waste bin is partly full and needs collection,1,0,0,0,Low
+RoadDamage,Small crack on the road with no immediate obstruction,1,0,0,0,Low
+Garbage,Garbage has accumulated for several days in a residential area,2,0,0,1,Medium
+Pothole,Moderate pothole on a local road,1,0,0,1,Medium
+Streetlight,Several streetlights are not working near a bus stop,3,0,0,1,Medium
+Drainage,Water is stagnating on the roadside after rain,2,0,0,1,Medium
+Pothole,Large pothole on a busy road causing vehicles to swerve,2,0,1,1,High
+Drainage,Open drain near a school entrance,2,1,0,1,High
+RoadDamage,Broken road surface is disrupting traffic at a junction,3,0,1,1,High
+Garbage,Large waste pile is blocking part of a main road,3,0,1,1,High
+ElectricalHazard,A fallen live electrical wire is reported on a public walkway,1,0,0,1,Critical
+Flooding,Floodwater is entering homes and trapping residents,3,0,1,1,Critical
+RoadDamage,A collapsed road section has created an immediate danger to vehicles,2,0,1,1,Critical
+Drainage,A person has fallen into an uncovered deep drain,1,0,0,1,Critical
+Pothole,Small pothole on a quiet residential lane,1,0,0,0,Low
+Drainage,Blocked drain is causing slow water flow on the street,1,0,0,1,Medium
+Pothole,Pothole is close to a hospital entrance and affects ambulance access,2,1,1,1,High
+ElectricalHazard,Sparking electrical equipment is exposed in a crowded public area,2,0,0,1,Critical
